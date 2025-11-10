@@ -1,16 +1,26 @@
-# load_candidates_from_j son(path) - возвращает список всех кандидатов
-# • get_candidate(candidate_id) - возвращает одного кандидата по его id
-# • get_candidates_by_name(candidate_name) — возвращает кандидатов по имени
-# • get_candidates_by_skill(skill_name) - возвращает кандидатов по навыку
-
+import json
 def load_candidates_from_json(path):
-    pass
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
+    
+def get_candidates(candidate_id, data):
+    candidate_id = int(candidate_id)
+    for i in data:
+        if i["id"] == int(candidate_id):
+            return i
 
-def get_candidates(candidate_id):
-    pass
+def get_candidates_by_name(candidate_name, data):
+    result = []
+    for i in data:
+        if candidate_name.lower() in i["name"].lower():
+            result.append(i)
+    return result
 
-def get_candidates_by_name(candidate_name):
-    pass
+def get_candidates_by_skill(skill_name, data):
+    result = []
+    for i in data:
+        if skill_name.lower() in i["skills"].lower().split(", "):
+            result.append(i)
+    return result
 
-def get_candidates_by_skill(skill_name):
-    pass

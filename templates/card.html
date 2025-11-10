@@ -6,10 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Bce кандидаты</h1>
-{% for i in candidates %}
-<h4><p><a href="/candidate/{{i.id}}">{{i.name}}</a></p></h4>
-{% endfor %}
-    
+    <h1>{{candidate.name}}</h1>
+<h2>{{candidate.position}}</h2>
+<img src="{{candidate['picture']}}" width="200"/>
+<h3>{{candidate.skills}}</h3>
 </body>
 </html>
